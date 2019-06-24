@@ -1,0 +1,187 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  background-color: white; }
+
+header {
+  background: url(../img/m-h-day.jpg) center;
+  padding: 0 0 200px 0;
+  border-radius: 0 0 40% 0; }
+
+.header-wrap, .section_card_wrap, .footer-wrap {
+  max-width: 1200px;
+  margin: 0 auto; }
+
+.landing-logo,
+.header_heading,
+.header_text {
+  width: 45%; }
+
+.landing-logo {
+  padding: 20px 0 0 0;
+  display: flex;
+  align-items: center; }
+  .landing-logo p {
+    color: #2C2F3C;
+    font-family: 'Hind', sans-serif;
+    padding: 0 0 0 15px;
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center; }
+    .landing-logo p span {
+      font-size: 10px;
+      letter-spacing: 0; }
+
+.header_heading {
+  padding: 70px 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 70px;
+  font-weight: bold;
+  color: #2C2F3C;
+  position: relative;
+  z-index: 0; }
+  .header_heading:before {
+    content: "";
+    width: 295px;
+    height: 25px;
+    background-color: #14A0C7;
+    position: absolute;
+    top: 210px;
+    z-index: -1; }
+
+.header_text {
+  padding: 0 0 70px 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #2C2F3C; }
+
+.header_button {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 150px;
+  height: 50px;
+  background-color: #699900; }
+
+.section_text {
+  color: #2C2F3C;
+  text-align: center;
+  padding: 25px 0;
+  font-size: 42px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  position: relative;
+  z-index: 0; }
+  .section_text:before {
+    content: "";
+    width: 190px;
+    height: 15px;
+    background-color: #14A0C7;
+    position: absolute;
+    top: 55px;
+    left: 765px;
+    z-index: -1; }
+
+.section_card_wrap, .footer-wrap {
+  display: flex;
+  justify-content: space-between; }
+  .section_card_wrap .section_card, .footer-wrap .section_card {
+    background-color: #21232E;
+    width: 32%;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center; }
+    .section_card_wrap .section_card img, .footer-wrap .section_card img {
+      border-radius: 5px;
+      width: 100%; }
+
+.section_card_heading,
+.section_card_text,
+.section_banner .section_banner_text {
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif; }
+
+.section_card_heading {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 0;
+  position: relative;
+  display: inline-block;
+  z-index: 0; }
+  .section_card_heading span {
+    width: 100%;
+    height: 10px;
+    background-color: #14A0C7;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    z-index: -1; }
+
+.section_card_text, .section_banner .section_banner_text {
+  font-size: 16px; }
+
+.section_banner {
+  position: absolute;
+  left: 17.49%;
+  top: 1450px;
+  background-image: linear-gradient(to right, #649410, #00955c, #008ea4, #007ed1, #315fc8);
+  width: 65%;
+  padding: 30px 0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+  .section_banner .section_banner_heading {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 30px;
+    color: #2C2F3C;
+    font-weight: bold;
+    position: relative;
+    z-index: 0; }
+    .section_banner .section_banner_heading:before {
+      content: "";
+      width: 65px;
+      height: 10px;
+      background-color: #14A0C7;
+      position: absolute;
+      top: 20px;
+      left: 120px;
+      z-index: -1; }
+  .section_banner .section_banner_text {
+    text-align: left;
+    padding: 10px 0 0 0; }
+  .section_banner .section_banner_button {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 150px;
+    height: 50px;
+    background-color: #699900; }
+
+footer {
+  margin-top: 200px;
+  background-color: #21232E; }
+
+.footer-wrap {
+  align-items: center;
+  color: white;
+  padding: 120px 0 50px 0;
+  font-family: "Source Sans Pro", sans-serif; }
+  .footer-wrap p, .footer-wrap span {
+    color: #C0C3CE; }
+  .footer-wrap .footer_text,
+  .footer-wrap .footer-cr {
+    width: 40%; }
+  .footer-wrap .footer-cr {
+    text-align: right; }
