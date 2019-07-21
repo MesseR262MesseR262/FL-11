@@ -79,7 +79,7 @@ function mapArray(arr, foo) {
 
   }
 
-} 
+}
 
 
 function filterArray(arr, foo) {
