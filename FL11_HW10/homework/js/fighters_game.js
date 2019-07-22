@@ -1,112 +1,58 @@
-let winsOne = 0;
-
-let winsTwo = 0;
-
-let loosesOne = 0;
-
-let loosesTwo = 0;
-
-let MaxHealth = 0;
-
 let MinHealth = 0;
 
-function Fighter(obj) {
+function Fighter (fighterData) {
 
-	obj.getName = function() {
+  this.wins = 0;
+  this.losses = 0;
+  let absoluteProbability = 100;
 
-		return this.name;
+  this.getWins = () => this.wins;
+  this.getLosses = () => this.losses;
+  this.getName = () => fighterData.name;
+  this.getDamage = () => fighterData.damage;
+  this.getAgility = () => fighterData.agility;
+  this.getHealth = () => fighterData.hp;
 
-	}
+  this.attack = function(defender) {
 
-    function getMaxHealth(obj) {
+    let rel = parseInt( Math.random() * absoluteProbability);
 
-		return obj.hp;
+    if (rel < defender.getAgility()) {
 
-	}
+      defender.dealDamage(this.getDamage());
 
-	MaxHealth = getMaxHealth(obj);
+      console.log(`${this.getName()} make ${this.getDamage()} damage to ${defender.getName()}`);
 
-	obj.getDamage = function() {
+    } else {
 
-		return this.damage;
+      console.log(`${this.getName()} attack missed`);
 
-	}
+    }
+  }
 
-	obj.getAgility = function() {
+  this.logCombatHistory = function() {
 
-		return this.agility;
+    console.log(`Name: ${fighterData.name}, Wins: ${this.wins}, Losses: ${this.losses}`);
 
-	}
+  }
 
-	obj.getHealth = function() {
+  this.dealDamage = function(attackDamage) {
 
-		return this.hp;
+    fighterData.hp < attackDamage ? fighterData.hp = 0 : fighterData.hp -= attackDamage;
 
-	}
+  }
 
-	obj.attack = function(defender) {
+  this.addWin = function() {
 
-		let max = 101;
+    this.wins = this.getWins() + 1 || 1;
 
-		let absoluteProbability = 100;
+  }
 
-		let rel = Math.floor(Math.random() * max);
+  this.addLoss = function() {
 
-		if (rel <= absoluteProbability - defender.agility) {
+      this.losses = this.getLosses() + 1 || 1;
 
-			defender.hp = defender.hp - this.damage;
-
-			return this.name + ' make ' + this.damage + ' ' + defender.name;
-
-		} else {
-
-			return this.name + ' attack missed ';
-
-		}
-
-	}
-
-	obj.heal = function(points) {
-
-		if (this.hp + points > MaxHealth) {
-
-			this.hp = MaxHealth;
-
-			return this.hp;
-
-		} else {
-
-			this.hp += points;
-
-			return this.hp;
-		}
-
-	}
-
-	obj.dealDamage = function(points) {
-
-		if (this.hp <= MinHealth) {
-
-			this.hp = MaxHealth;
-
-			return this.hp;
-
-		} else {
-
-			this.hp -= points;
-		}
-	}
-
-	obj.logCombatHistory = function() {
-
-		let history = 'Name: ' + this.name + ', Wins: 0' + ', Losses: 0';
-
-		return history;
-
-	}
-
-	return obj;
-
+  }
 }
 
 const myFighter = new Fighter({name: 'John', damage: 20, hp: 100, agility: 25});
@@ -114,82 +60,25 @@ const myFighter2 = new Fighter({name: 'Jack', damage: 10, hp: 120, agility: 40})
 
 function battle (myFighter, myFighter2) {
 
-	if (myFighter.getHealth() === 0) {
-		
-		return console.log(myFighter.getName() + ' is dead and cant fight.');
-	} else if (myFighter2.getHealth() === 0) {
+    while (myFighter.getHealth() > MinHealth && myFighter2.getHealth() > MinHealth) {
 
-		return console.log(myFighter2.getName() + ' is dead and cant fight.');
+        myFighter.attack(myFighter2);
+        myFighter2.attack(myFighter);
 
-	}
+        if (myFighter.getHealth() === MinHealth & myFighter2.getHealth() > MinHealth) {
 
-	for (let i = 0; ; i++) {
+          myFighter.addLoss();
+          myFighter2.addWin();
+          console.log(`${myFighter2.getName()} win in fight!`);
+          console.log(`${myFighter.getName()} is dead and cant't fight.`);
 
-		console.log(myFighter.attack(myFighter2));
+        } else if (myFighter2.getHealth() === MinHealth & myFighter.getHealth() > MinHealth) {
 
-		console.log(myFighter2.attack(myFighter));
+          myFighter.addWin();
+          myFighter2.addLoss();
+          console.log(`${myFighter.getName()} win in fight!`);
+          console.log(`${myFighter2.getName()} is dead and cant't fight.`);
 
-		if (myFighter.getHealth() === 0) {
-
-			myFighter.logCombatHistory = function() {
-
-				loosesTwo = loosesTwo + 1;
-
-				let historyOne = 'Name: ' + this.name + ', Wins: ' + winsTwo + ', Losses: ' + loosesTwo;
-
-				return historyOne;
-
-			}
-
-			myFighter2.logCombatHistory = function() {
-
-				loosesTwo = 0;
-
-				winsTwo = winsTwo + 1;
-
-				let historyTwo = 'Name: ' + this.name + ', Wins: ' + winsTwo + ', Losses: ' + loosesTwo;
-
-				return historyTwo;
-
-			}
-
-			break;
-
-		} else if (myFighter2.getHealth() === 0) {
-
-			myFighter.logCombatHistory = function() {
-
-				winsTwo = winsTwo + 1;
-
-				let historyOne = 'Name: ' + this.name + ', Wins: ' + winsTwo + ', Losses: ' + loosesTwo;
-
-				return historyOne;
-
-			}
-
-			myFighter2.logCombatHistory = function() {
-
-				loosesTwo = loosesTwo + 1;
-
-				let historyTwo = 'Name: ' + this.name + ', Wins: ' + winsOne + ', Losses: ' + loosesTwo;
-
-				return historyTwo;
-
-			}
-
-			break;
-
-		}
-	}
-
+        }
+    }
 }
-
-battle(myFighter, myFighter2);
-
-console.log(myFighter.getHealth());
-
-console.log(myFighter2.getHealth());
-
-battle(myFighter, myFighter2);
-
-// addWin, addLoss, 2 нулі
