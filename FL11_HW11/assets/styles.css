@@ -1,0 +1,78 @@
+#root {
+    width: 70%;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #31b0d5;
+}
+
+#taskToDo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#notification{
+    width: 400px;
+    height: auto;
+}
+
+#input {
+    margin: 0 auto;
+    width: 110%;
+    height: 30px;
+    padding: 10px;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 25px;
+    box-shadow: 0 0 2px lightgray;
+}
+
+#output {
+    margin: 0 auto;
+    width: 100%;
+}
+
+#addBtn {
+    border: 0;
+}
+
+#list {
+    font-size: 18px;
+    font-family: "Open Sans", sans-serif;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#check {
+    width: 24px;
+    height: 24px;
+    margin: 10px;
+}
+
+.material-icons {
+    font-size: 56px;
+    color: #31b0d5;
+    line-height: 46px;
+}
+
+.material-icons.delete, .material-icons.edit {
+    font-size: 23px;
+    color: #31b0d5;
+    line-height: 1.6;
+    margin: 0 15px;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+ul li:nth-child(2n+1){
+    background-color: rgba(109, 234, 244, 0.1);
+}
